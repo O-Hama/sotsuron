@@ -13,8 +13,8 @@ const camera = new Camera(video, {
     onFrame : async () =>{
         await hands.send({image: video});
     },
-    width: window.parent.screen.width,
-    height: window.parent.screen.height,
+    width: window.inner.width,
+    height: window.inner.height,
     facingMode: 'environment'//外カメ
 });
 
@@ -32,7 +32,7 @@ const calWorldCoordinate = (x, y, z) =>{
     let worldX;
     let worldY;
     let worldZ = -0.5;
-    let asp = window.parent.screen.width / window.parent.screen.height;
+    let asp = window.inner.width / window.inner.height;
     let hws;
     let px;
     let py;
@@ -40,14 +40,14 @@ const calWorldCoordinate = (x, y, z) =>{
     let lenY;
 
     hws = worldZ * Math.tan(20 * Math.PI/180);
-    hw = window.parent.screen.width / 2;
+    hw = window.inner.width / 2;
     hw2 = hw / asp;
-    px = x * window.parent.screen.width;
+    px = x * window.inner.width;
     lenX = px - hw;
     worldX = lenX * hws / hw2;
 
-    hh = window.parent.screen.height / 2;
-    py = y * window.parent.screen.height;
+    hh = window.inner.height / 2;
+    py = y * window.inner.height;
     lenY = py - hh;
     worldY = lenY * hws / hh;
 
