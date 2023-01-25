@@ -28,35 +28,73 @@ hands.setOptions({
 
 //人差し指のワールド座標を計算
 const calWorldCoordinate = (x, y, z) =>{
-    let worldCoordinate = [];
-    let worldX;
-    let worldY;
-    let worldZ = -0.5;
-    let asp = window.innerWidth / window.innerHeight;
-    let hws;
-    let px;
-    let py;
-    let lenX;
-    let lenY;
+    if(window.innerWidth > window.innerHeight){
+        let worldCoordinate = [];
+        let worldX;
+        let worldY;
+        let worldZ = -0.5;
+        let asp = window.innerWidth / window.innerHeight;
+        let hws;
+        let hw;
+        let hw2;
+        let hh;
+        let px;
+        let py;
+        let lenX;
+        let lenY;
 
-    hws = worldZ * Math.tan(20 * Math.PI/180);
-    hw = window.innerWidth / 2;
-    hw2 = hw / asp;
-    px = x * window.innerWidth;
-    lenX = px - hw;
-    worldX = lenX * hws / hw2;
+        hws = worldZ * Math.tan(20 * Math.PI/180);
+        hw = window.innerWidth / 2;
+        hw2 = hw / asp;
+        px = x * window.innerWidth;
+        lenX = px - hw;
+        worldX = lenX * hws / hw2;
 
-    hh = window.innerHeight / 2;
-    py = y * window.innerHeight;
-    lenY = py - hh;
-    worldY = lenY * hws / hh;
+        hh = window.innerHeight / 2;
+        py = y * window.innerHeight;
+        lenY = py - hh;
+        worldY = lenY * hws / hh;
 
 
-    worldCoordinate[0] = -1 * worldX;
-    worldCoordinate[1] = worldY;
-    worldCoordinate[2] = worldZ;
+        worldCoordinate[0] = -1 * worldX;
+        worldCoordinate[1] = worldY;
+        worldCoordinate[2] = worldZ;
 
-    return worldCoordinate;
+        return worldCoordinate;
+    }else{
+        let worldCoordinate = [];
+        let worldX;
+        let worldY;
+        let worldZ = -0.5;
+        let asp = window.innerHeight / window.innerWidth;
+        let hws;
+        let hw;
+        let hh;
+        let hh2;
+        let px;
+        let py;
+        let lenX;
+        let lenY;
+
+        hws = worldZ * Math.tan(20 * Math.PI/180);
+        hh = window.innerHeight / 2;
+        hh2 = hh / asp;
+        py = y * window.innerHeight;
+        lenY = py - hh;
+        worldY = lenY * hws / hh2;
+
+        hw = window.innerWidth / 2;
+        px = x * window.innerWidth;
+        lenX = px - hw;
+        worldX = lenX * hws / hw;
+
+
+        worldCoordinate[0] = -1 * worldX;
+        worldCoordinate[1] = worldY;
+        worldCoordinate[2] = worldZ;
+
+        return worldCoordinate;
+    }
 };
 
 /*オブジェクトの向きを計算
